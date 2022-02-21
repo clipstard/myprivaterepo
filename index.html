@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./basic.css" type="text/css">
+</head>
+
+<body>
+    <div id="div1">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident amet, porro vero facilis magni natus nobis
+        error tempora. Labore, voluptatem.
+    </div>
+
+
+    <h2 id="countId">
+        0
+    </h2>
+
+    <button id="myButton">
+        Schimba text
+    </button>
+
+    <button id="colorButton">
+        Schimba culoarea
+    </button>
+
+    <div>
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+    </div>
+
+    <script>
+        var count = 0;
+        const colors = [
+            'gray', 'red', 'green', 'blue', 'yellow', 'brown', 'black', 'cyan', 'purple'
+        ];
+        const colorLength = colors.length;
+        const element = document.getElementById('div1');
+        const countElement = document.getElementById('countId');
+        countElement.innerHTML = 'Butonul a fost apasat de ' + count + ' ori';
+
+        function increment() {
+            count = count + 1;
+            countElement.innerHTML = 'Butonul a fost apasat de ' + count + ' ori';
+        }
+
+        function changeMyText() {
+            element.innerHTML = 'Un text nou afisat';
+            increment();
+        }
+
+        function changeMyColor() {
+            countElement.style.color = colors[count % colorLength];
+            increment();
+        }
+
+        function changeMyFontSize() {
+            console.log(document.getElementById('myRange').value);
+            countElement.style.fontSize = document.getElementById('myRange').value + 'px';
+            countElement.style.top = document.getElementById('myRange').value * 10 + 'px';
+        }
+
+        document.getElementById('myButton').addEventListener('click', changeMyText);
+        document.getElementById('colorButton').addEventListener('click', changeMyColor);
+        document.getElementById('myRange').addEventListener('input', changeMyFontSize);
+
+    </script>
+</body>
+
+</html>

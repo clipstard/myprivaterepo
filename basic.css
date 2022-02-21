@@ -1,0 +1,36 @@
+
+div {
+    padding: 5px;
+}
+
+.bara-de-sus {
+    min-height: 100px;
+    display: flex;
+}
+
+.bara-de-sus a {
+    margin-right: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.bara-de-sus a:last-of-type {
+    margin-right: auto;
+}
+
+.bara-de-sus a:first-of-type {
+    margin-left: auto;
+}
+
+
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 210px auto 210px;
+}
+
+#countId {
+    position: absolute;
+    left: 50px;
+    top: 50px;
+}
