@@ -32,6 +32,7 @@
 
     <script>
         var count = 0;
+        var countHowManyTimesButtonsAreClicked = 0;
         const colors = [
             'gray', 'red', 'green', 'blue', 'yellow', 'brown', 'black', 'cyan', 'purple'
         ];
@@ -42,7 +43,7 @@
 
         function increment() {
             count = count + 1;
-            countElement.innerHTML = 'Butonul a fost apasat de ' + count + ' ori';
+            countElement.innerHTML = `Butonul a fost apasat de ${count} ori`;
         }
 
         function changeMyText() {
