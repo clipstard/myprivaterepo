@@ -1,87 +1,54 @@
-var count = 0;
-const colors = [
-    'red', 'blue', 'green', 'yellow', 'brown', 'black', 'gray', 'cyan', 'purple', 'pink',
-];
-var transport = [];
-const len = colors.length;
-const element = document.getElementById('div1');
-const myButton = document.getElementById('myButton');
-const myHeading = document.getElementById('myHeading');
+const button = document.getElementById('submitButton');
+const firstNameInput = document.getElementById('firstName');
+const lastNameInput = document.getElementById('lastName');
+const emailInput = document.getElementById('email');
 
-function increment () {
-    count++;
-}
 
-function incrementText () {
-    increment();
-    myHeading.innerHTML = `Count = ${count}`;
-}
+button.addEventListener('click', () => {
+    const valid = validateField('firstName', 'First name is required') &&
+    validateField('lastName', 'Last name is required') &&
+    validateField('email', 'Email is required') &&
+    validateEmail('Email must contain "@" and "."');
 
-function changeMyText() {
-    incrementText();
-    myButton.innerText = `click me (${count})`;
-}
 
-document.getElementById('changeColorButton').addEventListener('click', function () {
-    incrementText();
-    myHeading.style.color = generageColor();
-});
-
-function addBrakeFunction() {
-    myHeading.innerHTML = '<br />' + myHeading.innerHTML ;
-}
-
-document.getElementById('addBreak').addEventListener('click', addBrakeFunction);
-
-const checkboxes = document.getElementsByTagName('input');
-
-function getTransport(num) {
-    if (num === 0) {
-        return 'Bicileta';
+    if (valid) {
+        console.log(firstNameInput.value + "\n" + lastNameInput.value + "\n" + emailInput.value);
     }
-
-    if (num === 1) {
-        return 'Masina';
-    }
-
-    if (num === 2) {
-        return 'Avion';
-    }
-
-    return 'Tren';
-}
-
-for ( let i = 0; i < checkboxes.length; i++) {
-    const checkbox = checkboxes.item(i);
-    if (checkbox.type === 'checkbox') {
-        checkbox.addEventListener('input', function () {
-            if (checkbox.checked) {
-                transport.push(i)
-            } else {
-                transport = transport.filter((item) => item !== i);
-            }
-
-            let str = '';
-            transport.forEach(transportType => {
-                str += getTransport(transportType);
-            });
-            myHeading.innerHTML = 'Tipul de transport: ' + str;
-        });
-    }
-}
-
-document.getElementById('myRange').addEventListener('input', function () {
-const value = document.getElementById('myRange').value;
-myHeading.style.fontSize = value + 'px';
-myHeading.style.opacity = value - 1 + '%';
 });
 
 
+function validateField(fieldName, errorMessage) {
+    const error = document.getElementById(`${fieldName}Error`);
+    const field =  document.getElementById(fieldName);
+    const value = field.value;
+    if (value === '' || value === null || value.trim() === '') {
+        error.innerHTML = errorMessage;
+        error.style.display = 'block';
+        field.classList.add('error');
+        return false;
+    } else {
+        error.innerHTML = '';
+        error.style.display = 'none';
+        field.classList.remove('error');
+    }
 
-function generageColor() {
-    const red = Math.random() * 255;
-    const green = Math.random() * 255;
-    const blue = Math.random() * 255;
+    return true;
+}
 
-    return `rgb(${red}, ${green}, ${blue})`;
+function validateEmail(errorMessage) {
+    const error = document.getElementById('emailError');
+    const field =  document.getElementById('email');
+    const value = field.value;
+    if (value.includes('@') && value.includes('.')) {
+        error.innerHTML = '';
+        error.style.display = 'none';
+        field.classList.remove('error');
+        return true;
+    } else {
+        error.innerHTML = errorMessage;
+        error.style.display = 'block';
+        field.classList.add('error');
+    }
+
+    return false;
 }

@@ -8,39 +8,28 @@
 </head>
 
 <body>
-
-    <div id="div1">
-    </div>
-
-    <button onclick="changeMyText()" id="myButton">
-        click me
-    </button>
-
-    <button id="changeColorButton">
-        ChangeColor
-    </button>
-
-    <button id="addBreak">
-        Add break
-    </button>
-
-
-    <h1 id="myHeading">
-        Some text
-    </h1>
-
-    <div>
+    <div class="form">
         <div>
-            Tipuri de transport
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName">
+            <div class="error-text" id="firstNameError"></div>
         </div>
-        <input type="checkbox" name="myCheck" id="check1"> Bicicleta
-        <input type="checkbox" name="myCheck2" id="check2"> Masina
-        <input type="checkbox" name="myCheck3" id="check3"> Avion
-        <input type="checkbox" name="myCheck4" id="check4"> Tren
-    </div>
 
-    <div>
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+        <div>
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName">
+            <div class="error-text" id="lastNameError"></div>
+        </div>
+
+        <div>
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email">
+            <div class="error-text" id="emailError"></div>
+        </div>
+
+        <div>
+            <button type="button" id="submitButton">Submit</button>
+        </div>
     </div>
 
     <script src="actions.js"></script>
