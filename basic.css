@@ -1,25 +1,24 @@
-
 .container {
     display: flex;
-    flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
+    flex-direction: row;
+
 }
 
 .container div {
-    margin-top: 10px;
-    margin-bottom: 15px;
+    max-width: 33%;
 }
 
-.container .error {
-    display: none;
-    color: red;
-    font-size: 12px;
-    margin-top: 0;
-    margin-bottom: 0;
+
+.option2 {
+    display: block;
 }
 
-.container label.error {
-    font-size: 16px;
-    display: inline;
+.option2 label {
+    display: block;
+}
+
+#secondCol,
+#firstCol,
+#thirdCol {
+    border: 5px solid transparent;
 }

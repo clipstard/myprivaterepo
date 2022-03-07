@@ -10,51 +10,91 @@
 <body>
 
 
-    <div class="container">
-        <div>
-            <label for="firstName">First name: </label>
-            <input type="text" id="firstName" name="firstName">
-            <div class="error" id="firstNameError"></div>
-        </div>
-        <div>
-            <label for="lastName">Last name: </label>
-            <input type="text" id="lastName" name="lastName">
-            <div class="error" id="lastNameError"></div>
-        </div>
-        <div>
-            <label for="email">Email: </label>
-            <input type="text" id="email" name="email">
-            <div class="error" id="emailError"></div>
-        </div>
-        <div>
-            <label for="city">City: </label>
-            <input type="text" id="city" name="city">
-            <div class="error" id="cityError"></div>
+    <div class="container" id="container">
+        
+        <div class="option2">
+            <form id="firstCol">
+                <label class="radio">
+                <input type="radio" id="america1" name="radio">
+                <span>America</span>
+                </label>
+                <label class="radio">
+                <input type="radio" id="moldova1" name="radio">
+                <span>Moldova</span>
+                </label>
+                <label class="radio">
+                <input type="radio" id="italy1" name="radio">
+                <span>Italy</span>
+                </label>
+                <label class="radio">
+                <input type="radio" id="india1" name="radio">
+                <span>India</span>
+                </label>
+                <label class="radio">
+                <input type="radio" id="greece1" name="radio">
+                <span>Greece</span>
+                </label>
+            </form>
         </div>
 
-        <div>
-            <button type="button" id="submitButton">
-                Submit
-            </button>
+
+        <div class="option2">
+            <form id="secondCol">
+                <label class="radio">
+                <input type="radio" id="america2" name="radio">
+                <span>America</span>
+                </label>
+                <label class="radio">
+                <input type="radio" id="moldova2" name="radio" >
+                <span>Moldova</span>
+                </label>
+                <label class="radio">
+                <input type="radio" id="italy2" name="radio" >
+                <span>Italy</span>
+                </label>
+                <label class="radio">
+                <input type="radio" id="india2" name="radio">
+                <span>India</span>
+                </label>
+                <label class="radio">
+                <input type="radio" id="greece2" name="radio" >
+                <span>Greece</span>
+                </label>
+            </form>
+        </div>
+
+
+
+        <div class="option2">
+            <form id="thirdCol">
+                <label class="radio">
+                <input type="radio" id="america3" name="radio" >
+                <span>America</span>
+                </label>
+                <label class="radio">
+                <input type="radio" id="moldova3" name="radio" >
+                <span>Moldova</span>
+                </label>
+                <label class="radio">
+                <input type="radio" id="italy3" name="radio" >
+                <span>Italy</span>
+                </label>
+                <label class="radio">
+                <input type="radio" id="india3" name="radio" >
+                <span>India</span>
+                </label>
+                <label class="radio">
+                <input type="radio" id="greece3" name="radio">
+                <span>Greece</span>
+                </label>
+            </form>
         </div>
     </div>
 
-
-
-    <div class="container">
-        <div id="firstNameDisplay">
-
-        </div>
-        <div id="lastNameDisplay">
-
-        </div>
-        <div id="emailDisplay">
-
-        </div>
-        <div id="cityDisplay">
-
-        </div>
+    <div>
+        <button id="check">check</button>
     </div>
+
 
 
     <script src="actions.js"></script>

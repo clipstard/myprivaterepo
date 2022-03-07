@@ -1,115 +1,46 @@
+var firstCol = document.getElementById('firstCol');
+var secondCol = document.getElementById('secondCol');
+var thirdCol = document.getElementById('thirdCol');
+var container = document.getElementById('container');
 
 
-document.getElementById('submitButton').addEventListener('click', function () {
-    const nameValid = validateField('firstName', 'First name is required');
-    const lastNameValid = validateField('lastName', 'Last name is required');
+function getColor() {
+    const colors = ['00', '0F', '5F', 'AF', 'FF'];
+    const fisrIndex = getActiveIndex(firstCol);
+    console.log(fisrIndex);
+    const red = colors[fisrIndex];
+    const green = colors[getActiveIndex(secondCol)];
+    const blue = colors[getActiveIndex(thirdCol)];
+    return `#${red}${green}${blue}`;
+}
 
-    let cityHasValue = validateField('city', 'City is required');
-    let emailHasValue = validateField('email', 'Email is required');
+function resetColors() {
+    firstCol.style.borderColor = 'transparent';
+    secondCol.style.borderColor = 'transparent';
+    thirdCol.style.borderColor = 'transparent';
+}
 
-    if (emailHasValue) {
-        emailHasValue = validateEmail();
+function getActiveIndex(element) {
+    let i = 0;
+    const inputs = element.getElementsByTagName('input');
+    for (i =0; i< 5; i++) {
+        if (inputs.item(i).checked) {
+            return i;
+        }
     }
 
-    if (cityHasValue) {
-        cityHasValue = validateCity();
-    }
+    return i < 5 ? i : 0;
+}
 
-    const allFieldsValid = nameValid && lastNameValid && cityHasValue && emailHasValue;
-    if (allFieldsValid) {
-        showValues();
-    } else {
-        hideValues();
-    }
+firstCol.addEventListener('click', () => {
+    resetColors();
+    firstCol.style.borderColor = getColor();
 });
-
-function showValues() {
-    [
-        'firstName',
-        'lastName',
-        'email',
-        'city'
-    ].forEach(id => {
-        const emelent = document.getElementById(id);
-        const valueElement = document.getElementById(`${id}Display`);
-        valueElement.innerHTML = `${id}: ${emelent.value};`;
-    });
-}
-
-function hideValues () {
-    [
-        'firstName',
-        'lastName',
-        'email',
-        'city'
-    ].forEach(id => {
-        const valueElement = document.getElementById(`${id}Display`);
-        valueElement.innerHTML = null;
-    });
-}
-
-
-function validateField(id, errorMessage) {
-    const fieldInput = document.getElementById(id);
-    const label = fieldInput.parentElement.children.item(0);
-    const error = document.getElementById(`${id}Error`);
-    const value = fieldInput.value;
-
-    if (value === null || value === '' || value.trim() === '') {
-        error.innerHTML = errorMessage;
-        error.style.display = 'block';
-        label.classList.add('error');
-        return false;
-    } else {
-        error.innerHTML = '';
-        error.style.display = 'none';
-        label.classList.remove('error');
-    }
-
-    return true;
-}
-
-
-function validateEmail() {
-    const emailInput = document.getElementById('email');
-    const label = emailInput.parentElement.children.item(0);
-    const error = document.getElementById(`emailError`);
-    const value = emailInput.value;
-
-    
-    if (!value.includes('@') || !value.includes('.') || value.lastIndexOf('.') < value.lastIndexOf('@')) {
-        error.innerHTML = 'Email is invalid';
-        error.style.display = 'block';
-        label.classList.add('error');
-        return false;
-    } else {
-        error.innerHTML = '';
-        error.style.display = 'none';
-        label.classList.remove('error');
-    }
-
-    return true;
-}
-
-
-
-function validateCity() {
-    const cityInput = document.getElementById('city');
-    const label = cityInput.parentElement.children.item(0);
-    const error = document.getElementById(`cityError`);
-    const value = cityInput.value;
-
-    
-    if (value.length < 4) {
-        error.innerHTML = 'City length must be greater then 3';
-        error.style.display = 'block';
-        label.classList.add('error');
-        return false;
-    } else {
-        error.innerHTML = '';
-        error.style.display = 'none';
-        label.classList.remove('error');
-    }
-
-    return true;
-}
+secondCol.addEventListener('click', () => {
+    resetColors();
+    secondCol.style.borderColor = getColor();
+});
+thirdCol.addEventListener('click', () => {
+    resetColors();
+    thirdCol.style.borderColor = getColor();
+});
