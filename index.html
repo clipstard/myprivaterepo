@@ -8,29 +8,54 @@
 </head>
 
 <body>
-    <div class="form">
+
+
+    <div class="container">
         <div>
-            <label for="firstName">First Name</label>
+            <label for="firstName">First name: </label>
             <input type="text" id="firstName" name="firstName">
-            <div class="error-text" id="firstNameError"></div>
+            <div class="error" id="firstNameError"></div>
         </div>
-
         <div>
-            <label for="lastName">Last Name</label>
+            <label for="lastName">Last name: </label>
             <input type="text" id="lastName" name="lastName">
-            <div class="error-text" id="lastNameError"></div>
+            <div class="error" id="lastNameError"></div>
         </div>
-
         <div>
-            <label for="email">Email</label>
+            <label for="email">Email: </label>
             <input type="text" id="email" name="email">
-            <div class="error-text" id="emailError"></div>
+            <div class="error" id="emailError"></div>
+        </div>
+        <div>
+            <label for="city">City: </label>
+            <input type="text" id="city" name="city">
+            <div class="error" id="cityError"></div>
         </div>
 
         <div>
-            <button type="button" id="submitButton">Submit</button>
+            <button type="button" id="submitButton">
+                Submit
+            </button>
         </div>
     </div>
+
+
+
+    <div class="container">
+        <div id="firstNameDisplay">
+
+        </div>
+        <div id="lastNameDisplay">
+
+        </div>
+        <div id="emailDisplay">
+
+        </div>
+        <div id="cityDisplay">
+
+        </div>
+    </div>
+
 
     <script src="actions.js"></script>
 </body>
