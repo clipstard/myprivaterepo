@@ -1,24 +1,3 @@
-.container {
-    display: flex;
-    flex-direction: row;
-
-}
-
-.container div {
-    max-width: 33%;
-}
-
-
-.option2 {
-    display: block;
-}
-
-.option2 label {
-    display: block;
-}
-
-#secondCol,
-#firstCol,
-#thirdCol {
-    border: 5px solid transparent;
+label.is-invalid {
+    color: red;
 }

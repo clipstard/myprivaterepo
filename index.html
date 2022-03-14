@@ -4,100 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./basic.css" type="text/css">
 </head>
 
 <body>
-
-
     <div class="container" id="container">
-        
-        <div class="option2">
-            <form id="firstCol">
-                <label class="radio">
-                <input type="radio" id="america1" name="radio">
-                <span>America</span>
-                </label>
-                <label class="radio">
-                <input type="radio" id="moldova1" name="radio">
-                <span>Moldova</span>
-                </label>
-                <label class="radio">
-                <input type="radio" id="italy1" name="radio">
-                <span>Italy</span>
-                </label>
-                <label class="radio">
-                <input type="radio" id="india1" name="radio">
-                <span>India</span>
-                </label>
-                <label class="radio">
-                <input type="radio" id="greece1" name="radio">
-                <span>Greece</span>
-                </label>
-            </form>
-        </div>
-
-
-        <div class="option2">
-            <form id="secondCol">
-                <label class="radio">
-                <input type="radio" id="america2" name="radio">
-                <span>America</span>
-                </label>
-                <label class="radio">
-                <input type="radio" id="moldova2" name="radio" >
-                <span>Moldova</span>
-                </label>
-                <label class="radio">
-                <input type="radio" id="italy2" name="radio" >
-                <span>Italy</span>
-                </label>
-                <label class="radio">
-                <input type="radio" id="india2" name="radio">
-                <span>India</span>
-                </label>
-                <label class="radio">
-                <input type="radio" id="greece2" name="radio" >
-                <span>Greece</span>
-                </label>
-            </form>
-        </div>
-
-
-
-        <div class="option2">
-            <form id="thirdCol">
-                <label class="radio">
-                <input type="radio" id="america3" name="radio" >
-                <span>America</span>
-                </label>
-                <label class="radio">
-                <input type="radio" id="moldova3" name="radio" >
-                <span>Moldova</span>
-                </label>
-                <label class="radio">
-                <input type="radio" id="italy3" name="radio" >
-                <span>Italy</span>
-                </label>
-                <label class="radio">
-                <input type="radio" id="india3" name="radio" >
-                <span>India</span>
-                </label>
-                <label class="radio">
-                <input type="radio" id="greece3" name="radio">
-                <span>Greece</span>
-                </label>
-            </form>
-        </div>
-    </div>
-
-    <div>
-        <button id="check">check</button>
+        <form name="form" id="form">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Country select</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                </select>
+              </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="button" class="btn btn-primary" id="submit">Submit</button>
+          </form>
     </div>
 
 
 
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="actions.js"></script>
+    <script>
+        async function getCountries() {
+            const response = await fetch('https://restcountries.com/v3.1/all');
+
+            const countries = await response.json();
+            const names = countries.map(item => item.name.official).slice(0, 150);
+            console.log(names);
+            const selectBox = $('#exampleFormControlSelect1');
+            names.forEach((element, index) => {
+                selectBox.append(`<option value="${index}">${element}</option>`);
+            });
+        }
+
+        $('#submit').on('click', function () {
+           const elements = $('#form').find('input,select');
+           if (!$(elements[0]).val().includes('gmail.com')) {
+                $(elements[0]).addClass('is-invalid');
+                $(elements[0]).prev().addClass('is-invalid');
+            }
+           for (let i = 0; i < elements.length; i++) {
+                console.log($(elements[i]).val());
+           }
+        });
+
+        setTimeout(() => {
+            getCountries();
+        }, 1500);
+    </script>
 </body>
 
 </html>
