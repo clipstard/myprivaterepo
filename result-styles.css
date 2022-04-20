@@ -1,0 +1,16 @@
+.title-h {
+    font-size: 32px;
+}
+
+#finish-button {
+    font-size: 20px;
+    width: 100%;
+}
+
+#main-row {
+    min-height: 250px;
+}
+
+.mr-1 {
+    margin-right: 1rem;
+}

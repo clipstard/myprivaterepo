@@ -1,3 +1,26 @@
-label.is-invalid {
-    color: red;
+.title-h {
+    font-size: 32px;
+}
+
+.add-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+#add-button {
+    max-height: 45px;
+}
+
+.col-6 {
+    padding-top: 15px;
+}
+
+.split-in-half > select {
+    max-width: 50%;
+}
+
+#finish-button {
+    font-size: 20px;
+    width: 100%;
 }
